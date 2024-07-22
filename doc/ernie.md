@@ -1,27 +1,10 @@
-# encode-llm-sdk
-
-印客学院 大模型 SDK
-
-## 📖 使用文档
-
-- [文心一言](./doc/ernie.md)
-- [通义千问](./doc/qwen.md)
-- [讯飞星火](./doc/spark.md)
-- [混元助手](./doc/hunyuan.md)
-- [Minimax](./doc/minimax.md)
-- [ImagineArt](./doc/vyro.md)
-
-## 📦 安装
-
-要安装 `encode-llm-sdk`，请运行以下命令:
-
-```bash
-$ pnpm install encode-llm-sdk
-```
-
-## 👋 使用
+# 文心一言
 
 在这里获取你的 [accessToken](https://aistudio.baidu.com/index/accessToken) 值。
+
+## 通用对话
+
+当前支持 `ernie-bot | ernie-bot-turbo | ernie-bot-4 | ernie-bot-8k` 模型。
 
 ```ts
 import { ErnieAI } from 'encode-llm-sdk';
@@ -42,8 +25,6 @@ main();
 
 ### 支持流式
 
-使用与 OpenAI 的 SDK 完全一致。
-
 ```ts
 import { ErnieAI } from 'encode-llm-sdk';
 
@@ -59,6 +40,27 @@ async function main() {
   for await (const chunk of stream) {
     process.stdout.write(chunk.choices[0]?.delta?.content || '');
   }
+}
+
+main();
+```
+
+## 语义向量
+
+仅支持 `ernie-text-embedding` 模型。
+
+```ts
+import { ErnieAI } from 'encode-llm-sdk';
+
+const client = new ErnieAI();
+
+async function main() {
+  const response = await client.embeddings.create({
+    model: 'ernie-text-embedding',
+    input: 'Your text string goes here',
+  });
+
+  console.log(response.data[0].embedding);
 }
 
 main();

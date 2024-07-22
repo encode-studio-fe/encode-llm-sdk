@@ -1,0 +1,46 @@
+version: "0.2"
+ignorePaths:
+  - archive
+  - dist
+  - node_modules
+dictionaries:
+  - en_US
+  - softwareTerms
+  - bash
+  - node
+  - npm
+  - html
+  - css
+  - typescript
+  - filetypes
+words:
+  - aigc
+  - aistudio
+  - baichuan
+  - chatcompletion
+  - chatglm
+  - dashscope
+  - embo
+  - erniebot
+  - hunyuan
+  - inpaint
+  - inpainted
+  - jiti
+  - lineart
+  - logprobs
+  - longcontext
+  - openai
+  - openpose
+  - permissioning
+  - postpublish
+  - qwen
+  - qwenai
+  - sdxl
+  - trivago
+  - tsdoc
+  - vyro
+  - wanx
+  - wechat
+  - wechaty
+  - Weightage
+  - yiyan

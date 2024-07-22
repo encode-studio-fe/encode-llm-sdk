@@ -1,0 +1,8 @@
+{
+  "*.ts": [
+    "prettier --check"
+  ],
+  "*.md": [
+    "prettier --check"
+  ]
+}

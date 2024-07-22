@@ -1,0 +1,104 @@
+{
+  "name": "encode-llm-sdk",
+  "version": "0.0.1",
+  "description": "印客学院--大模型 SDK",
+  "keywords": [
+    "encode",
+    "ai",
+    "llm",
+    "qwen",
+    "ernie-bot",
+    "hunyuan",
+    "minimax"
+  ],
+  "author": "chenghuai",
+  "homepage": "https://github.com/encode-studio-fe/encode-llm-sdk#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/encode-studio-fe/encode-llm-sdk"
+  },
+  "license": "MIT",
+  "type": "commonjs",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist-types/index.d.ts",
+  "sideEffects": [
+    "./dist/shims/node.cjs",
+    "./dist/shims/node.mjs"
+  ],
+  "exports": {
+    "./package.json": "./package.json",
+    "./shims/node": {
+      "import": "./dist/shims/node.mjs",
+      "require": "./dist/shims/node.cjs",
+      "types": "./dist-types/shims/node.d.ts"
+    },
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "types": "./dist-types/index.d.ts"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist-types/*",
+        "./dist-types/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist",
+    "dist-types"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "directory": "package",
+    "registry": "https://registry.npmjs.org"
+  },
+  "clean-publish": {
+    "withoutPublish": true,
+    "tempDir": "package"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "task": "esno --no-warnings -r dotenv/config",
+    "inspect": "esno --no-warnings --inspect -r dotenv/config",
+    "build": "vite build",
+    "fmt": "prettier src samples vite.config.mts doc README.md --log-level warn",
+    "prepublishOnly": "pnpm build && rm -rf ./package && clean-publish",
+    "postpublish": "rm -rf ./package"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "packageManager": "pnpm@9.1.2",
+  "dependencies": {
+    "esno": "^4.7.0",
+    "openai": "^4.47.1"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/node": "^20.12.12",
+    "@types/ws": "^8.5.10",
+    "@typescript-eslint/eslint-plugin": "^7.10.0",
+    "@typescript-eslint/parser": "^7.10.0",
+    "clean-publish": "^5.0.0",
+    "dotenv": "^16.4.5",
+    "eslint": "^9.3.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-define-config": "^2.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-tsdoc": "^0.2.17",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.4",
+    "prettier": "^3.2.5",
+    "typescript": "~5.4.5",
+    "vite": "^5.2.11",
+    "vite-plugin-checker": "^0.6.4",
+    "vite-plugin-dts": "^3.9.1",
+    "vite-plugin-externalize-deps": "^0.8.0",
+    "ws": "^8.17.0"
+  }
+}
